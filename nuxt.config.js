@@ -22,7 +22,7 @@ export default {
       { hid: 'keywords', name: 'keywords', content: 'GitHub, GitHub gram, githubgram'},
       { property: 'og:title', content: 'GitHub-gram'},
       { property: 'og:description', content: 'GitHub-gram lets you to view GitHub users in instagram-like layout.' },
-      { property: 'og:url', content: 'https://aykutsarac.github.io/GitHub-gram'},
+      { property: 'og:url', content: 'https://aykutsarac.github.io/gitHub-gram'},
       { property: 'og:image', content: '/githubgram.png'},
       { property: 'og:image:width', content: '64'},
       { property: 'og:image:height', content: '64'}
