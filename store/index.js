@@ -1,19 +1,19 @@
-import defaultUser from '@/assets/json/AykutSarac.json';
-import defaultRepos from '@/assets/json/repos.json';
-
-
 export const state = () => ({
-  api: defaultUser,
-  repos: defaultRepos,
+  api: Object,
+  repos: Object,
   result: 200,
-})
+});
 
 export const mutations = {
   setApi (state, api) {
     state.api = api;
   },
   setRepos (state, repos) {
-    state.repos = repos;
+    state.repos = repos.sort((a, b) => {
+      a = new Date(a.created_at);
+      b = new Date(b.created_at);
+      if (a > b) return -1;
+    });
   },
   setResult (state, code) {
     state.result = code;

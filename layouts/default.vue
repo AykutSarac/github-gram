@@ -25,4 +25,8 @@ body {
   padding: 0;
   background-color: #0d1117;
 }
+
+a:hover {
+  text-decoration: none;
+}
 </style>

@@ -1,6 +1,6 @@
 # GitHub-gram
 
-GitHub-gram lets you to view GitHub users in instagram-like layout using the GitHub API.
+GitHub-gram lets you to view GitHub users in instagram-like layout using the GitHub API. Check out demo from here: https://aykutsarac.github.io/github-gram/
 
 ## Getting Started
 

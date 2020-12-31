@@ -13,7 +13,7 @@
         <small id="bio">
           {{ api.location ? "📍 " + api.location : "" }}
           <br v-if="api.location" />
-          {{ api.blog ? "📔 " + api.blog : "" }}
+          <a v-if="api.blog" :href="api.blog" target="_blank" style="color: #497094">{{ api.blog ? "📔 " + api.blog : "" }}</a>
           <br v-if="api.blog" />
           {{ api.bio }}
         </small>
@@ -45,53 +45,86 @@
       </div>
     </div>
     <b-container fluid class="repos">
-      <a class="repo" :href="repo.base" target="_blank" v-for="(repo, key) in repos" :key="key">
-          {{ repo.name }}<br />
-          {{ repo.stars >= 0 ? "Stars: " + repo.stars : "" }}
-      </a>
+      <b-button
+        class="repo"
+        target="_blank"
+        v-for="(repo, key) in repos"
+        :key="key"
+        v-b-modal.modal
+        v-on:click="repoKey = key"
+        @click="show=true"
+      >
+        {{ repo.name }}<br />
+        {{ repo.stargazers_count >= 0 ? "Stars: " + repo.stargazers_count : "" }}
+      </b-button>
     </b-container>
+
+    <!-- Modal -->
+    <b-modal v-model="show" centered static id="modal" :title="repos[repoKey].name">
+      {{ repos[repoKey].description ? "Description: " + repos[repoKey].description : "" }} <br v-if="repos[repoKey].description" />
+      {{ repos[repoKey].stargazers_count ? "Stars: " + repos[repoKey].stargazers_count : ""}} <br v-if="repos[repoKey].stargazers_count" />
+      {{ repos[repoKey].language ? "Language: " + repos[repoKey].language : "" }} <br v-if="repos[repoKey].language" />
+      {{ repos[repoKey].license ? "License: " + repos[repoKey].license.name : "" }}
+      <template #modal-footer>
+        <div class="w-100">
+          <p class="float-left">Last update was {{ lastUpdate }} </p>
+          <b-button
+            variant="dark"
+            class="float-right ml-2"
+            @click="show=false"
+          >
+            Close
+          </b-button>
+          <b-button
+            variant="dark"
+            class="float-right"
+            @click="show=false"
+          >
+          <a :href="repos[repoKey].html_url" target="_blank" style="color: #dde0e6">
+            <i class="fab fa-github fa-lg" style="color: #dde0e6;"></i> View at GitHub
+          </a>
+          </b-button>
+        </div>
+      </template>
+    </b-modal>
+
   </div>
 </template>
 
 <script>
 import Alert from "@/components/Alert";
+import defaultUser from '@/assets/json/AykutSarac.json';
+import defaultRepos from '@/assets/json/repos.json';
+import moment from 'moment';
 
 export default {
+  components: {
+    Alert
+  },
+  data: function() {
+    return {
+    repoKey: 0,
+    show: false
+    }
+  },
   computed: {
     api: function () {
       return this.$store.state.api;
     },
     repos: function () {
-      const modded = this.$store.state.repos
-        .map((repo) => {
-          return {
-            name: repo.name,
-            stars: repo.stargazers_count,
-            description: repo.description,
-            created: repo.created_at,
-            base: repo.html_url
-          };
-        })
-        .sort((a, b) => {
-          a = new Date(a.created);
-          b = new Date(b.created);
-          if (a > b) return -1;
-        });
-      return modded;
+      return this.$store.state.repos;
     },
     result: function () {
       return this.$store.state.result;
     },
+    lastUpdate: function() {
+      return moment(this.repos[this.repoKey].updated_at).fromNow();
+    }
   },
-  methods: {
-    clipboardURL: function () {
-      var copyText = document.getElementById("userlink");
-      copyText.select();
-      copyText.setSelectionRange(0, 99999);
-      document.execCommand("copy");
-      alert("Copied the text: " + copyText.value);
-    },
-  },
+  beforeCreate() {
+    this.$store.commit("setRepos", defaultRepos);
+    this.$store.commit("setApi", defaultUser);
+  }
 };
 </script>
 
@@ -187,6 +220,11 @@ export default {
       cursor: pointer;
     }
   }
+}
+
+.modal-content {
+  background-color: #18202b;
+  color: #b2c7d4;
 }
 
 @media (min-width: 768px) {
