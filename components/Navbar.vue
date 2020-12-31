@@ -7,13 +7,11 @@
       style="background: #161b22 !important"
     >
       <b-navbar-brand href="/" class="brand">
-        <i class="fab fa-github"></i>
-        <router-link to="/">GitHub UserView</router-link>
+        <i class="fab fa-github fa-lg" style="font-size: 30px; color: #dde0e6;"><span>GitHub-gram</span></i>
       </b-navbar-brand>
 
-      <b-input-group>
+      <b-input-group id="searchbar">
         <b-form-input
-          id="searchbar"
           placeholder="Search username..."
           @keyup.enter="fetchUser"
           v-model="username"
@@ -37,37 +35,39 @@ import { mapMutations } from "vuex";
 import axios from "axios";
 
 export default {
-  data: function() {
+  data: function () {
     return {
-      username: ""
+      username: "",
     };
   },
   methods: {
-    fetchUser: function() {
-
-      axios.get("https://api.github.com/users/" + this.username).then(res => {
-        if (res.data.login) this.$store.commit("setApi", res.data);
-        return axios.get("https://api.github.com/users/" + res.data.login + "/repos");
-      }).then(res => {
-        this.$store.commit("setRepos", res.data);
-        this.$store.commit("setResult", 200);
-      }).catch(e => {
-        this.$store.commit("setResult", 404);
-      });
+    fetchUser: function () {
+      axios
+        .get("https://api.github.com/users/" + this.username)
+        .then((res) => {
+          if (res.data.login) this.$store.commit("setApi", res.data);
+          return axios.get(
+            "https://api.github.com/users/" + res.data.login + "/repos"
+          );
+        })
+        .then((res) => {
+          this.$store.commit("setRepos", res.data);
+          this.$store.commit("setResult", 200);
+        })
+        .catch((e) => {
+          this.$store.commit("setResult", 404);
+        });
 
       this.username = "";
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.brand a {
+.brand span {
   display: none;
-}
-
-a {
-  font-family: "Roboto", "sans-serif";
+  font-family: "Roboto", "sans-serif" !important;
   font-weight: 600;
   font-size: 30px;
   color: #dde0e6 !important;
@@ -82,19 +82,23 @@ img {
 }
 
 #searchbar {
-  background-color: rgba(48, 48, 48, 0.233);
-  color: rgb(243, 234, 234);
-  letter-spacing: 1px;
-  width: 10%;
+  width: 100%;
+  margin: auto;
 
-  &:focus,
-  &:hover {
-    transition: 0.3s;
-    border-color: inherit;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-    border-right: none;
-    background-color: rgba(109, 109, 109, 0.233);
+  & > input {
+    background-color: rgba(48, 48, 48, 0.233);
+    color: rgb(243, 234, 234);
+    letter-spacing: 1px;
+
+    &:focus,
+    &:hover {
+      transition: 0.3s;
+      border-color: inherit;
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border-right: none;
+      background-color: rgba(109, 109, 109, 0.233);
+    }
   }
 }
 
@@ -106,6 +110,17 @@ img {
     border-color: inherit;
     -webkit-box-shadow: none;
     box-shadow: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .brand span {
+    margin-left: .5em;
+    display: initial;
+  }
+
+  #searchbar {
+    width: 70%;
   }
 }
 </style>

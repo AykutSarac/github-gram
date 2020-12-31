@@ -9,7 +9,14 @@
         <div class="namefield">
           <h1>{{ api.login }}</h1>
         </div>
-        <small id="bio"> {{ api.bio }} </small>
+        <h6>{{ api.name }}</h6>
+        <small id="bio">
+          {{ api.location ? "📍 " + api.location : "" }}
+          <br v-if="api.location" />
+          {{ api.blog ? "📔 " + api.blog : "" }}
+          <br v-if="api.blog" />
+          {{ api.bio }}
+        </small>
       </div>
     </div>
     <div class="stats">
@@ -19,7 +26,7 @@
       </div>
       <div class="row">
         {{ api.following }}
-        <h6>Followed</h6>
+        <h6>Following</h6>
       </div>
       <div class="row">
         {{ api.public_repos }}
@@ -31,17 +38,17 @@
             <b-dropdown-item :href="api.html_url" target="_blank"
               >View at GitHub</b-dropdown-item
             >
+            <b-dropdown-divider />
             <b-dropdown-item>Cancel</b-dropdown-item>
           </b-dropdown>
         </div>
       </div>
     </div>
     <b-container fluid class="repos">
-<div class="repo" v-for="(repo, key) in repos" :key="key">
-        {{ repo.name }}<br />
+      <a class="repo" :href="repo.base" target="_blank" v-for="(repo, key) in repos" :key="key">
+          {{ repo.name }}<br />
         Stars: {{ repo.stars }}
-      </div>
-      
+      </a>
     </b-container>
   </div>
 </template>
@@ -55,13 +62,21 @@ export default {
       return this.$store.state.api;
     },
     repos: function () {
-      const modded = this.$store.state.repos.map((repo) => {
-        return {
-          name: repo.name,
-          stars: repo.stargazers_count,
-          description: repo.description,
-        };
-      });
+      const modded = this.$store.state.repos
+        .map((repo) => {
+          return {
+            name: repo.name,
+            stars: repo.stargazers_count,
+            description: repo.description,
+            created: repo.created_at,
+            base: repo.html_url
+          };
+        })
+        .sort((a, b) => {
+          a = new Date(a.created);
+          b = new Date(b.created);
+          if (a > b) return -1;
+        });
       return modded;
     },
     result: function () {
@@ -83,11 +98,13 @@ export default {
 <style lang="scss">
 #profile {
   margin-top: 2em;
+  justify-content: center;
   color: white;
   display: flex;
 
   .namefield {
     h1 {
+      color: white;
       font-size: 2rem;
       object-fit: cover;
     }
@@ -96,9 +113,8 @@ export default {
     display: block;
   }
 
-  #bio {
+  .details {
     color: silver;
-    font-size: 12px;
   }
 
   .avatar {
@@ -169,6 +185,38 @@ export default {
 
     &:hover {
       cursor: pointer;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  #profile {
+    justify-content: left;
+    margin-left: 25%;
+    margin-right: 25%;
+
+    .avatar img {
+      width: 8rem;
+    }
+  }
+
+  .stats {
+    width: 50%;
+  }
+
+  .repos {
+    width: 60%;
+    margin-left: 25%;
+
+    .repo {
+      margin: 0.3em;
+      width: 20%;
+      height: 200px;
+
+      &:hover {
+        background-color: #0a4c8393;
+        text-decoration: none;
+      }
     }
   }
 }
