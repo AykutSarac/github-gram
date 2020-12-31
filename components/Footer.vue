@@ -2,7 +2,7 @@
   <div class="fluid-container">
     <ul>
       <li>GitHub-gram</li>
-      <li><a href="https://github.com/AykutSarac/GitHub-gram">View GitHub-gram at GitHub</a></li>
+      <li><a href="https://github.com/AykutSarac/github-gram">View GitHub-gram at GitHub</a></li>
       <li><a href="https://docs.github.com/en/free-pro-team@latest/rest/guides/getting-started-with-the-rest-api">GitHub REST API</a></li>
       <li></li>
     </ul>
