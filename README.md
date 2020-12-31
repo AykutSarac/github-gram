@@ -1,20 +1,25 @@
-# github-userview
+# Growtopian's Website
 
-## Build Setup
+GitHub-gram lets you to view GitHub users in instagram-like layout using the GitHub API.
 
-```bash
-# install dependencies
-$ npm install
+## Getting Started
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+### Prerequisites
 
-# generate static project
-$ npm run generate
-```
+- Node.js v8.x.x or higher
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+### Installing
+1. `git clone https://github.com/AykutSarac/github-gram.git`
+2. `npm i`
+
+## Built With
+
+* [Node.js](http://www.dropwizard.io/1.0.2/docs/) - The javascript runtime
+* [Vue.js](https://vuejs.org/) - User interface tooling
+* [Nuxt.js](https://nuxtjs.org/) - Web application framework
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
