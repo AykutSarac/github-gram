@@ -1,4 +1,4 @@
-# Growtopian's Website
+# GitHub-gram
 
 GitHub-gram lets you to view GitHub users in instagram-like layout using the GitHub API.
 
