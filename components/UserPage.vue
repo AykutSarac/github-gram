@@ -47,7 +47,7 @@
     <b-container fluid class="repos">
       <a class="repo" :href="repo.base" target="_blank" v-for="(repo, key) in repos" :key="key">
           {{ repo.name }}<br />
-        Stars: {{ repo.stars }}
+          {{ repo.stars ? "Stars: " + repo.stars : "" }}
       </a>
     </b-container>
   </div>
