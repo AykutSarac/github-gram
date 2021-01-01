@@ -13,7 +13,13 @@
         <small id="bio">
           {{ api.location ? "📍 " + api.location : "" }}
           <br v-if="api.location" />
-          <a v-if="api.blog" :href="api.blog" target="_blank" style="color: #497094">{{ api.blog ? "📔 " + api.blog : "" }}</a>
+          <a
+            v-if="api.blog"
+            :href="api.blog"
+            target="_blank"
+            style="color: #497094"
+            >{{ api.blog ? "📔 " + api.blog : "" }}</a
+          >
           <br v-if="api.blog" />
           {{ api.bio }}
         </small>
@@ -52,60 +58,82 @@
         :key="key"
         v-b-modal.modal
         v-on:click="repoKey = key"
-        @click="show=true"
+        @click="show = true"
       >
         {{ repo.name }}<br />
-        {{ repo.stargazers_count >= 0 ? "Stars: " + repo.stargazers_count : "" }}
+        {{
+          repo.stargazers_count >= 0 ? "Stars: " + repo.stargazers_count : ""
+        }}
       </b-button>
     </b-container>
 
     <!-- Modal -->
-    <b-modal v-model="show" centered static id="modal" :title="repos[repoKey].name">
-      {{ repos[repoKey].description ? "Description: " + repos[repoKey].description : "" }} <br v-if="repos[repoKey].description" />
-      {{ repos[repoKey].stargazers_count ? "Stars: " + repos[repoKey].stargazers_count : ""}} <br v-if="repos[repoKey].stargazers_count" />
-      {{ repos[repoKey].language ? "Language: " + repos[repoKey].language : "" }} <br v-if="repos[repoKey].language" />
-      {{ repos[repoKey].license ? "License: " + repos[repoKey].license.name : "" }}
+    <b-modal
+    v-if="repos[repoKey]"
+      v-model="show"
+      centered
+      static
+      id="modal"
+      :title="repos[repoKey].name"
+    >
+      {{
+        repos[repoKey].description
+          ? "Description: " + repos[repoKey].description
+          : ""
+      }}
+      <br v-if="repos[repoKey].description" />
+      {{
+        repos[repoKey].stargazers_count
+          ? "Stars: " + repos[repoKey].stargazers_count
+          : ""
+      }}
+      <br v-if="repos[repoKey].stargazers_count" />
+      {{
+        repos[repoKey].language ? "Language: " + repos[repoKey].language : ""
+      }}
+      <br v-if="repos[repoKey].language" />
+      {{
+        repos[repoKey].license ? "License: " + repos[repoKey].license.name : ""
+      }}
       <template #modal-footer>
         <div class="w-100">
-          <p class="float-left">Last update was {{ lastUpdate }} </p>
+          <p class="float-left">Last update was {{ lastUpdate }}</p>
           <b-button
             variant="dark"
             class="float-right ml-2"
-            @click="show=false"
+            @click="show = false"
           >
             Close
           </b-button>
-          <b-button
-            variant="dark"
-            class="float-right"
-            @click="show=false"
-          >
-          <a :href="repos[repoKey].html_url" target="_blank" style="color: #dde0e6">
-            <i class="fab fa-github fa-lg" style="color: #dde0e6;"></i> View at GitHub
-          </a>
+          <b-button variant="dark" class="float-right" @click="show = false">
+            <a
+              :href="repos[repoKey].html_url"
+              target="_blank"
+              style="color: #dde0e6"
+            >
+              <i class="fab fa-github fa-lg" style="color: #dde0e6"></i> View at
+              GitHub
+            </a>
           </b-button>
         </div>
       </template>
     </b-modal>
-
   </div>
 </template>
 
 <script>
 import Alert from "@/components/Alert";
-import defaultUser from '@/assets/json/AykutSarac.json';
-import defaultRepos from '@/assets/json/repos.json';
-import moment from 'moment';
+import moment from "moment";
 
 export default {
   components: {
-    Alert
+    Alert,
   },
-  data: function() {
+  data: function () {
     return {
-    repoKey: 0,
-    show: false
-    }
+      repoKey: 0,
+      show: false,
+    };
   },
   computed: {
     api: function () {
@@ -117,13 +145,9 @@ export default {
     result: function () {
       return this.$store.state.result;
     },
-    lastUpdate: function() {
+    lastUpdate: function () {
       return moment(this.repos[this.repoKey].updated_at).fromNow();
-    }
-  },
-  beforeCreate() {
-    this.$store.commit("setRepos", defaultRepos);
-    this.$store.commit("setApi", defaultUser);
+    },
   }
 };
 </script>

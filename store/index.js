@@ -1,7 +1,7 @@
 export const state = () => ({
   api: Object,
   repos: Object,
-  result: 200,
+  result: 300,
 });
 
 export const mutations = {

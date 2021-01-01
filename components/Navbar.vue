@@ -31,33 +31,17 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import axios from "axios";
+import getUser from '@/middleware/getUser';
 
 export default {
   data: function () {
     return {
-      username: "",
+      username: '',
     };
   },
   methods: {
     fetchUser: function () {
-      axios
-        .get("https://api.github.com/users/" + this.username)
-        .then((res) => {
-          if (res.data.login) this.$store.commit("setApi", res.data);
-          return axios.get(
-            "https://api.github.com/users/" + res.data.login + "/repos"
-          );
-        })
-        .then((res) => {
-          this.$store.commit("setRepos", res.data);
-          this.$store.commit("setResult", 200);
-        })
-        .catch((e) => {
-          this.$store.commit("setResult", 404);
-        });
-
+      getUser(this.username, this.$store);
       this.username = "";
     },
   },
