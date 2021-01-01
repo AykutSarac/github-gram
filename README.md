@@ -1,18 +1,29 @@
-# GitHub-gram
+<div align="center">
+<h2>GitHub-gram</h2>
+<img alt="build passing" src="https://img.shields.io/badge/build-passing-green.svg">
+<img alt="MIT" src="https://img.shields.io/badge/license-MIT-green.svg">
+</div>
 
-GitHub-gram lets you to view GitHub users in instagram-like layout using the GitHub API. Check out demo from here: https://aykutsarac.github.io/github-gram/
+## Introduction
+<div align="center">
+<h4>Search/view GitHub users in similiar to instagram's layout.<h4>
+<img
+height="300px" alt="preview" src="https://i.ibb.co/3p2sDWM/aykutsarac-github-io-github-gram-Galaxy-S5.png">
+</div>
 
-## Getting Started
+# Live Demo
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+Check out the demo [here](https://aykutsarac.github.io/github-gram/)
 
-### Prerequisites
-
-- Node.js v8.x.x or higher
-
-### Installing
-1. `git clone https://github.com/AykutSarac/github-gram.git`
-2. `npm i`
+## Installation
+- Install dependencies
+```
+$ npm install
+```
+- Run it
+```
+$ npm run dev
+```
 
 ## Built With
 
@@ -20,6 +31,6 @@ These instructions will get you a copy of the project up and running on your loc
 * [Vue.js](https://vuejs.org/) - User interface tooling
 * [Nuxt.js](https://nuxtjs.org/) - Web application framework
 
-## License
+## **License**
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT) - see the [`LICENSE`](LICENSE) file for details.
