@@ -8,7 +8,7 @@
 <div align="center">
 <h4>Search/view GitHub users in similiar to instagram's layout.<h4>
 <img
-height="300px" alt="preview" src="https://i.ibb.co/3p2sDWM/aykutsarac-github-io-github-gram-Galaxy-S5.png">
+height="500px" alt="preview" src="https://i.ibb.co/3p2sDWM/aykutsarac-github-io-github-gram-Galaxy-S5.png" style="border: 1px solid black; border-radius: 10px;">
 </div>
 
 # Live Demo
