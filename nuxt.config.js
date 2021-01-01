@@ -23,12 +23,12 @@ export default {
       { property: 'og:title', content: 'GitHub-gram'},
       { property: 'og:description', content: 'GitHub-gram lets you to view GitHub users in instagram-like layout.' },
       { property: 'og:url', content: 'https://aykutsarac.github.io/gitHub-gram'},
-      { property: 'og:image', content: '/githubgram.png'},
+      { property: 'og:image', content: './githubgram.png'},
       { property: 'og:image:width', content: '64'},
       { property: 'og:image:height', content: '64'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' },
       { rel: 'stylesheet', type: 'text/css', href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css', defer: true}
     ]
   },
