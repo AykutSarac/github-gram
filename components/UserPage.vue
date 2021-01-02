@@ -1,5 +1,5 @@
 <template>
-  <div class="head">
+  <div class="wrap">
     <Alert text="Cannot find this profile." v-if="result === 404" />
     <div id="profile">
       <div class="avatar">
@@ -153,6 +153,10 @@ export default {
 </script>
 
 <style lang="scss">
+.wrap {
+  min-height: 100vh;
+}
+
 #profile {
   margin-top: 2em;
   justify-content: center;
