@@ -9,16 +9,12 @@
 <script>
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import getUser from "@/middleware/getUser";
 
 
 export default {
   components: {
     Navbar,
     Footer
-  },
-  beforeMount: function () {
-    getUser("aykutsarac", this.$store);
   }
 }
 </script>

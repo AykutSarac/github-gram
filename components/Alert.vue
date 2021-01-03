@@ -1,11 +1,13 @@
 <template>
-    <div class="alert alert-danger">
-        {{ text }}
-    </div>
+<div>
+  <b-alert show fade>
+    {{ text }}
+  </b-alert>
+</div>
 </template>
 
 <script>
 export default {
-    props: ['text']
-}
+  props: ["text"]
+};
 </script>

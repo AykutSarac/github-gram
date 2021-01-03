@@ -1,5 +1,5 @@
 <template>
-  <div class="wrap">
+  <div v-if="api.login" class="wrap">
     <Alert text="Cannot find this profile." v-if="result === 404" />
     <div id="profile">
       <div class="avatar">
@@ -73,9 +73,13 @@ export default {
 
 <style lang="scss">
 
+.wrap {
+  width: 90%;
+  margin: 0 auto;
+}
+
 #profile {
   margin-top: 2em;
-  justify-content: center;
   color: white;
   display: flex;
 
@@ -107,7 +111,6 @@ export default {
 .stats {
   text-align: center;
   display: flex;
-  width: 90%;
   margin: 1em auto;
   background-color: #21262d;
   border-radius: 10px;

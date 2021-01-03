@@ -90,7 +90,6 @@ export default {
 
 <style lang="scss">
 .repos {
-  display: flex;
   flex-direction: row;
   flex-flow: row wrap;
   padding: 0;
@@ -100,6 +99,7 @@ export default {
   .repo {
     background-color: #052a4993;
     color: #c4c6bc;
+    margin: 0;
     width: 32%;
     height: 115px;
     padding: 1em 1em 0 1em;

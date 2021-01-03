@@ -14,10 +14,11 @@ div {
       padding-top: 4em;
       color: gray;
       font-size: 20px;
-      width: 50%;
+      width: 70%;
       margin: 0 auto;
 
       i {
+        margin-bottom: .2em;
         font-size: 5rem;   
       }
 }

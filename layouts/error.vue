@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    What's happening? We introduce you the 404 page, usually - nothing happens here.
+    <h3>404 Not Found</h3>
+    <small>Uh oh, seems like that's end of the road.</small>
   </div>
 </template>
 
@@ -19,10 +20,8 @@ export default {
   color: white;
   margin: 0 auto;
   padding-top: 8em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   text-align: center;
   font-size: 1.2em;
+  min-height: 80vh;
 }
 </style>
