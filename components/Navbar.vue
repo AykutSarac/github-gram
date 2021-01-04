@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     fetchUser: function () {
-      this.$router.replace(this.username);
+      getUser(this.username, this.$store);
       this.username = "";
     },
   },

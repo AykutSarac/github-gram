@@ -5,15 +5,7 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   router: {
-    base: '/github-gram/',
-    extendRoutes(routes, resolve) {
-      routes.push({
-        path: '/:user',
-        components: {
-          default: resolve(__dirname, 'pages/index'), // or routes[index].component
-        }
-      })
-    }
+    base: '/github-gram/'
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
@@ -31,7 +23,7 @@ export default {
       { property: 'og:title', content: 'GitHub-gram'},
       { property: 'og:description', content: 'GitHub-gram lets you to view GitHub users in instagram-like layout.' },
       { property: 'og:url', content: 'https://aykutsarac.github.io/gitHub-gram'},
-      { property: 'og:image', content: './githubgram.png'},
+      { property: 'og:image', content: '~/githubgram.png'},
       { property: 'og:image:width', content: '64'},
       { property: 'og:image:height', content: '64'}
     ],

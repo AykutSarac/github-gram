@@ -25,7 +25,7 @@ export default {
     NoRepo
   },
   beforeMount() {
-    getUser(this.$route.params.user ? this.$route.params.user : "aykutsarac", this.$store);
+    getUser("aykutsarac", this.$store);
   }
 };
 </script>
