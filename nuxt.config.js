@@ -5,7 +5,15 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   router: {
-    base: '/github-gram/'
+    base: '/github-gram/',
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/:user',
+        components: {
+          default: resolve(__dirname, 'pages/index'), // or routes[index].component
+        }
+      })
+    }
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)

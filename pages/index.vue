@@ -24,8 +24,8 @@ export default {
     Repos,
     NoRepo
   },
-  watchQuery(newQuery, oldQuery) {
-    getUser(newQuery.user, this.$store);
+  beforeMount() {
+    getUser(this.$route.params.user ? this.$route.params.user : "aykutsarac", this.$store);
   }
 };
 </script>

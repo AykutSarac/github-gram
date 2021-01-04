@@ -39,12 +39,9 @@ export default {
       username: '',
     };
   },
-  beforeMount() {
-    getUser("aykutsarac", this.$store);
-  },
   methods: {
     fetchUser: function () {
-      this.$router.replace("?user=" + this.username);
+      this.$router.replace(this.username);
       this.username = "";
     },
   },
