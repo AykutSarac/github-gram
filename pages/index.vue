@@ -10,7 +10,7 @@
 import Header from "@/components/Header";
 import Repos from "@/components/Repos";
 import NoRepo from "@/components/NoRepo";
-import getUser from "@/middleware/getUser";
+import getUser from '@/middleware/getUser';
 
 
 export default {
@@ -24,8 +24,8 @@ export default {
     Repos,
     NoRepo
   },
-  beforeMount: function () {
-    getUser("aykutsarac", this.$store);
+  watchQuery(newQuery, oldQuery) {
+    getUser(newQuery.user, this.$store);
   }
 };
 </script>
