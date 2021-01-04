@@ -6,8 +6,8 @@
       type="light"
       style="background: #161b22 !important"
     >
-      <b-navbar-brand href="/" class="brand">
-        <i class="fab fa-github fa-lg" style="font-size: 30px; color: #dde0e6;"><span>GitHub-gram</span></i>
+      <b-navbar-brand class="brand">
+        <nuxt-link to="/"><i class="fab fa-github fa-lg" style="font-size: 30px; color: #dde0e6;"><span>GitHub-gram</span></i></nuxt-link>
       </b-navbar-brand>
 
       <b-input-group id="searchbar">
@@ -42,6 +42,7 @@ export default {
   methods: {
     fetchUser: function () {
       getUser(this.username, this.$store);
+      this.$router.replace("/" + this.username);
       this.username = "";
     },
   },
