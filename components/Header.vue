@@ -15,7 +15,7 @@
           <br v-if="api.location" />
           <a
             v-if="api.blog"
-            :href="api.blog"
+            :href="/^https?:\/\//.test(api.blog) ? api.blog : 'https://' + api.blog"
             target="_blank"
             style="color: #497094"
             >{{ api.blog ? "📔 " + api.blog : "" }}</a
